@@ -3,16 +3,16 @@
  */
 import React from 'react';
 
-class Home extends React.Component {
+class Layout extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
         return (
-            <div className="home">
-                <h1 className="text-center">welcome home</h1>
+            <div className="wrapper">
+                {this.props.children}
             </div>
         );
     };
 }
-export default Home
+export default Layout
