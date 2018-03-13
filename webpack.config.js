@@ -71,6 +71,10 @@ module.exports = {
             '/user/logout.do': {
                 target: 'http://test.happymmall.com/',
                 changeOrigin: true
+            },
+            '/react-api/*': {
+                target: 'http://localhost:3000',
+                secure: false
             }
         }
     },
