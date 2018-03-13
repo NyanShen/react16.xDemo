@@ -4,9 +4,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './index.scss'
+import Home from "page/home/Home.jsx";
 
+import 'bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+import 'font-awesome/scss/font-awesome.scss';
+import 'styles/main.scss';
+
+class App extends React.Component {
+    render() {
+        return (
+            <Home />
+        );
+    };
+}
 ReactDOM.render(
-    <h1>Hello, world</h1>,
+    <App />,
     document.getElementById('app')
 );

@@ -40,7 +40,7 @@ module.exports = {
                 use: [{
                     loader: 'url-loader',
                     options: {
-                        name: 'resource/[name].[ext]',
+                        name: '[path][name].[ext]',
                         limit: 2000
                     }
                 }]
@@ -53,7 +53,8 @@ module.exports = {
             util: path.join(__dirname, '/src/util'),
             component: path.join(__dirname, '/src/component'),
             service: path.join(__dirname, '/src/service'),
-            page: path.join(__dirname, '/src/page')
+            page: path.join(__dirname, '/src/page'),
+            styles: path.join(__dirname, '/src/styles')
         }
     },
     devServer: {
@@ -83,6 +84,6 @@ module.exports = {
             filename: 'index.html',
             favicon: './favicon.ico'
         }),
-        new ExtractTextPlugin("css/[name].css")
+        new ExtractTextPlugin("[name].css")
     ]
 };

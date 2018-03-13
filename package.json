@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap-sass": "^3.3.6",
+    "font-awesome": "^4.7.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "build": "webpack"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
