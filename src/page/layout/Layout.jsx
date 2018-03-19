@@ -1,9 +1,9 @@
 import React from 'react';
 
+import NavTop from "component/nav-top/NavTop";
 import NavSide from "component/nav-side/NavSide";
 import './index.scss';
 import './theme.scss';
-import NavTop from "../../component/nav-top/NavTop";
 
 class Layout extends React.Component {
     constructor(props) {
