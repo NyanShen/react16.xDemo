@@ -1,7 +1,10 @@
-/**
- * Created by Administrator on 2018/3/10 0010.
- */
 import React from 'react';
+
+import NavSide from "component/nav-side/NavSide";
+import './index.scss';
+import './theme.scss';
+import NavTop from "../../component/nav-top/NavTop";
+
 class Layout extends React.Component {
     constructor(props) {
         super(props);
@@ -9,6 +12,8 @@ class Layout extends React.Component {
     render() {
         return (
             <div className="wrapper">
+                <NavTop />
+                <NavSide />
                 {this.props.children}
             </div>
         );
