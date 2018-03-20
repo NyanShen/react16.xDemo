@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-    entry: ['bootstrap-loader', './src/app.jsx'],
+    entry: './src/app.jsx',
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'js/app.js'
