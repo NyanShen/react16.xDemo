@@ -17,7 +17,18 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env', 'react']
+                        presets: ['env', 'react'],
+                        plugins: [
+                            [
+                                "import",
+                                [
+                                    {
+                                        "libraryName": "antd",
+                                        "style": true
+                                    }
+                                ]
+                            ]
+                        ]
                     }
                 }
             },
@@ -32,6 +43,23 @@ module.exports = {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract({
                     use: 'css-loader!sass-loader',
+                    fallback: 'style-loader'
+                })
+            },
+            {
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract({
+                    use: [{
+                        loader: 'css-loader'
+                    }, {
+                        loader: 'less-loader',
+                        options: {
+                            javascriptEnabled: true,
+                            modifyVars: {
+                                '@icon-url': '"~antd-iconfont/iconfont"',
+                            }
+                        }
+                    }],
                     fallback: 'style-loader'
                 })
             },

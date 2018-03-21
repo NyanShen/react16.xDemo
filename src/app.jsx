@@ -12,7 +12,7 @@ import ErrorPage from "page/error-page/ErrorPage.jsx";
 
 import 'bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 import 'font-awesome/scss/font-awesome.scss';
-import 'antd/dist/antd.min.css';
+import 'antd/dist/antd.less';
 import 'styles/main.scss';
 
 class App extends React.Component {
