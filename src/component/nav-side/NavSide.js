@@ -1,64 +1,57 @@
 import React from 'react';
 import {Link, NavLink} from 'react-router-dom';
+import {Layout, Menu, Breadcrumb, Icon} from 'antd';
+const {Header, Content, Footer, Sider} = Layout;
+const SubMenu = Menu.SubMenu;
 
 class NavSide extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            collapsed: false
+        }
     }
 
+    onCollapse(collapsed) {
+        this.setState({collapsed});
+    }
 
     render() {
         return (
-            <div className="navbar-default navbar-side">
-                <div className="sidebar-collapse">
-                    <ul className="nav" id="main-menu">
-                        <li>
-                            <NavLink exact to="/" activeClassName="active-menu">
-                                <i className="fa fa-bar-chart-o"></i>
-                                <span>首页</span>
-                            </NavLink>
-                        </li>
-                        <li className="active">
-                            <Link to="/product">
-                                <i className="fa fa-list"></i>
-                                <span>商品</span>
-                                <span className="fa arrow"></span>
-                            </Link>
-                            <ul className="nav nav-second-level collapse in">
-                                <li>
-                                    <NavLink to="/product" activeClassName="active-menu">商品管理</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/product.category" activeClassName="active-menu">品类管理</NavLink>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="active">
-                            <Link to="/order">
-                                <i className="fa fa-check-square-o fa-fw"></i>
-                                <span>订单</span>
-                                <span className="fa arrow"></span>
-                            </Link>
-                            <ul className="nav nav-second-level collapse in">
-                                <li>
-                                    <NavLink to="/order" activeClassName="active-menu">订单管理</NavLink>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <Link to="/user">
-                                <i className="fa fa-user-o fa-fw"></i>
-                                <span>用户</span>
-                            </Link>
-                            <ul className="nav nav-second-level collapse in">
-                                <li>
-                                    <NavLink to="/user" activeClassName="active-menu">用户列表</NavLink>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <Sider
+                collapsible
+                collapsed={this.state.collapsed}
+                onCollapse={this.onCollapse}>
+                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                    <Menu.Item key="1">
+                        <Icon type="pie-chart" />
+                        <span>Option 1</span>
+                    </Menu.Item>
+                    <Menu.Item key="2">
+                        <Icon type="desktop" />
+                        <span>Option 2</span>
+                    </Menu.Item>
+                    <SubMenu
+                        key="sub1"
+                        title={<span><Icon type="user" /><span>User</span></span>}
+                    >
+                        <Menu.Item key="3">Tom</Menu.Item>
+                        <Menu.Item key="4">Bill</Menu.Item>
+                        <Menu.Item key="5">Alex</Menu.Item>
+                    </SubMenu>
+                    <SubMenu
+                        key="sub2"
+                        title={<span><Icon type="team" /><span>Team</span></span>}
+                    >
+                        <Menu.Item key="6">Team 1</Menu.Item>
+                        <Menu.Item key="8">Team 2</Menu.Item>
+                    </SubMenu>
+                    <Menu.Item key="9">
+                        <Icon type="file" />
+                        <span>File</span>
+                    </Menu.Item>
+                </Menu>
+            </Sider>
         );
     };
 }

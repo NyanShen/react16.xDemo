@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import Layout from "page/layout/Layout.jsx";
+import AppLayout from "page/layout/AppLayout.jsx";
 import Home from "page/home/Home.jsx";
 import Login from "page/login/Login.jsx";
 import ErrorPage from "page/error-page/ErrorPage.jsx";
@@ -25,12 +25,12 @@ class App extends React.Component {
                 <Switch>
                     <Route path="/login" component={Login}/>
                     <Route path="/" render={() => (
-                        <Layout>
+                        <AppLayout>
                             <Switch>
                                 <Route path="/" exact component={Home}/>
                                 <Route component={ErrorPage}/>
                             </Switch>
-                        </Layout>
+                        </AppLayout>
                     )
                     }/>
                 </Switch>

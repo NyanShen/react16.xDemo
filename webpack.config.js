@@ -103,6 +103,10 @@ module.exports = {
             '/react-api/*': {
                 target: 'http://localhost:3000',
                 secure: false
+            },
+            '/api/*': {
+                target: 'http://localhost:12306',
+                secure: false
             }
         }
     },
