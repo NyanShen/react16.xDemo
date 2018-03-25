@@ -10,8 +10,6 @@ import Home from "page/home/Home.jsx";
 import Login from "page/login/Login.jsx";
 import ErrorPage from "page/error-page/ErrorPage.jsx";
 
-import 'bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-import 'font-awesome/scss/font-awesome.scss';
 import 'antd/dist/antd.less';
 import 'styles/main.scss';
 

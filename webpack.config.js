@@ -82,7 +82,8 @@ module.exports = {
             component: path.join(__dirname, '/src/component'),
             service: path.join(__dirname, '/src/service'),
             page: path.join(__dirname, '/src/page'),
-            styles: path.join(__dirname, '/src/styles')
+            styles: path.join(__dirname, '/src/styles'),
+            images: path.join(__dirname, '/src/images')
         }
     },
     devServer: {
