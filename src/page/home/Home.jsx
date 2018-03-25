@@ -6,6 +6,7 @@ import 'moment/locale/zh-cn';
 moment.locale('zh-cn');
 
 import PageTitle from "component/page-title/PageTitle";
+import AppBreadcrumb from "component/breadcrumb/AppBreadcrumb";
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -129,7 +130,7 @@ class HomeForm extends React.Component {
         const {getFieldDecorator} = this.props.form;
         return (
             <div id="page-wrapper">
-                <PageTitle pageTitle="首页"/>
+                <AppBreadcrumb submenu="首页"/>
                 <Form onSubmit={this.handleSubmit} style={formLayout}>
                     {
                         data.map((item, index) => {

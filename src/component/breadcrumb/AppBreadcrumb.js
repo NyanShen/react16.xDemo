@@ -10,10 +10,10 @@ class AppBreadcrumb extends React.Component {
 
     render() {
         return (
-            <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>首页</Breadcrumb.Item>
-                <Breadcrumb.Item>商品</Breadcrumb.Item>
-                <Breadcrumb.Item>商品管理</Breadcrumb.Item>
+            <Breadcrumb style={{ margin: '18px 0' }}>
+                <Breadcrumb.Item>{this.props.menu}</Breadcrumb.Item>
+                <Breadcrumb.Item><a href="">{this.props.submenu}</a></Breadcrumb.Item>
+                <Breadcrumb.Item>{this.props.pageTite}</Breadcrumb.Item>
             </Breadcrumb>
         );
     };

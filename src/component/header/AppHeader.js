@@ -11,6 +11,9 @@ class AppHeader extends React.Component {
     constructor(props) {
         super(props);
     }
+    toHome() {
+        this.props.history.push('/login');
+    }
 
     render() {
         return (
@@ -21,10 +24,11 @@ class AppHeader extends React.Component {
                     mode="horizontal"
                     defaultSelectedKeys={['2']}
                     style={{lineHeight: '64px'}}>
-                    <Menu.Item key="1">首页</Menu.Item>
-                    <Menu.Item key="2">商品</Menu.Item>
-                    <Menu.Item key="3">订单</Menu.Item>
-                    <Menu.Item key="4">用户</Menu.Item>
+                    <Menu.Item key="1" onClick={this.toHome}>首页</Menu.Item>
+                    <Menu.Item key="2">主导航</Menu.Item>
+                    <Menu.Item key="3">商品</Menu.Item>
+                    <Menu.Item key="4">订单</Menu.Item>
+                    <Menu.Item key="5">用户</Menu.Item>
                 </Menu>
             </Header>
         );
