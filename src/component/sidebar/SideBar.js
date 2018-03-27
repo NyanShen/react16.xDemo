@@ -14,19 +14,19 @@ class SideBar extends React.Component {
             <Sider width={250} style={{background: '#fff'}}>
                 <Menu
                     mode="inline"
-                    defaultSelectedKeys={['1']}
+                    defaultSelectedKeys={['3']}
                     defaultOpenKeys={['sub1']}
                     style={{height: '100%'}}>
 
                     <Menu.Item key="0">
-                        <Link to="/login">
+                        <Link to="/">
                             <Icon type="home" />首页
                         </Link>
                     </Menu.Item>
 
                     <SubMenu key="sub1" title={<span><Icon type="laptop"/>主导航</span>}>
                         <Menu.Item key="1">
-                            <Link to="/antForm">表单form</Link>
+                            <Link to="/antForm">多组表单form处理</Link>
                         </Menu.Item>
                         <Menu.Item key="2">
                             <Link to="/antTable">表格table</Link>
