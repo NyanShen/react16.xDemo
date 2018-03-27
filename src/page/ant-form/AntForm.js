@@ -114,7 +114,7 @@ class AntFormTemplate extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        let suffixes =[];
+        let suffixes = [];
         const formDataList = [];
         this.props.form.validateFields((err, values) => {
             if (!err) {
@@ -125,23 +125,25 @@ class AntFormTemplate extends React.Component {
                         suffixes = Array.from(new Set(suffixes));
                     }
                 }
-                console.log('values:' + this.formDataFilter(formDataList, suffixes, values));
+                console.log(values);
+                console.log(this.formDataFilter(formDataList, suffixes, values));
             }
         });
     }
 
     formDataFilter(formDataList, suffixes, values) {
         suffixes.forEach(function (item) {
-            const formdataObj = {};
+            const formDataObj = {};
             for (const key in values) {
-                if (values.hasOwnProperty(key)) {
-                    formdataObj[key.split('_')[0]] = values[key];
+                if (values.hasOwnProperty(key) && key.indexOf(item) !== -1) {
+                    formDataObj[key.split('_')[0]] = values[key];
                 }
             }
-            formDataList.push(formdataObj);
+            formDataList.push(formDataObj);
         })
         return formDataList;
     }
+
     /**
      * 根据后台返回的 data 中 type 类型生成不同的组件
      * @param item  json
@@ -185,7 +187,8 @@ class AntFormTemplate extends React.Component {
                             <div key={'div_' + formIndex} className="form-number">
                                 {
                                     this.state.formNumber.length > 1 ?
-                                        <Button type="dashed" key={'btn_' + formIndex} onClick={() => this.removeForm(formArray)}>
+                                        <Button type="dashed" key={'btn_' + formIndex}
+                                                onClick={() => this.removeForm(formArray)}>
                                             <Icon key={'icon_' + formIndex} type="close">删除此组form表单数据</Icon>
                                         </Button> : null
                                 }
