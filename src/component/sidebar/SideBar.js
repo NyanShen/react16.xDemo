@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, NavLink} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {Layout, Menu, Icon} from 'antd';
 const {SubMenu} = Menu;
 const {Sider} = Layout;
@@ -7,6 +7,9 @@ const {Sider} = Layout;
 class SideBar extends React.Component {
     constructor(props) {
         super(props);
+        this.state =  {
+            currentPath : this.props.history.location || '/user'
+        }
     }
 
     render() {
@@ -14,8 +17,8 @@ class SideBar extends React.Component {
             <Sider width={250} style={{background: '#fff'}}>
                 <Menu
                     mode="inline"
-                    defaultSelectedKeys={['3']}
-                    defaultOpenKeys={['sub1']}
+                    defaultSelectedKeys={['0']}
+                    //defaultOpenKeys={['sub1']}
                     style={{height: '100%'}}>
 
                     <Menu.Item key="0">
@@ -59,4 +62,4 @@ class SideBar extends React.Component {
         );
     };
 }
-export default SideBar;
+export default withRouter(SideBar);
