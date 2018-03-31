@@ -43,7 +43,7 @@ class SideBar extends React.Component {
                             <Link to="/product">商品管理</Link>
                         </Menu.Item>
                         <Menu.Item key="7">
-                            <Link to="/category">品类管理</Link>
+                            <Link to="/product.category">品类管理</Link>
                         </Menu.Item>
                     </SubMenu>
                     <SubMenu key="sub3" title={<span><Icon type="shopping-cart"/>订单</span>}>

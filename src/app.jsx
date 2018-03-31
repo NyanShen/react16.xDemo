@@ -9,6 +9,7 @@ import AntTable from "page/ant-table/AntTable.jsx";
 import ErrorPage from "page/error-page/ErrorPage.jsx";
 import AntForm from "page/ant-form/AntForm";
 import User from "page/user/User";
+import ProductRouter from "page/product/ProductRouter";
 
 import 'antd/dist/antd.less';
 import 'styles/main.scss';
@@ -30,6 +31,7 @@ class App extends React.Component {
                                 <Route path="/antForm" component={AntForm}/>
                                 <Route path="/user/index" component={User}/>
                                 <Redirect from="/user(/*)" to="/user/index"/>
+                                <Route path="/product(.category)?(/*)" component={ProductRouter}/>
                                 <Route component={ErrorPage}/>
                             </Switch>
                         </AppLayout>
