@@ -2,6 +2,8 @@ import React from 'react';
 import {Table} from "antd";
 
 import AppBreadcrumb from "component/breadcrumb/AppBreadcrumb";
+import AppPagination from "component/pagination/AppPagination";
+import './index.scss';
 
 const columns = [
     {
@@ -68,6 +70,13 @@ class User extends React.Component {
                         pagination={false}
                         columns={columns}
                         dataSource={dataSource.content}/>
+                </div>
+                <div className="table-pagination">
+                    <AppPagination
+                        showQuickJumper
+                        showTotal={(total) => `共 ${total} 条`}
+                        total={dataSource.totalElements}
+                    />
                 </div>
             </div>
         );
