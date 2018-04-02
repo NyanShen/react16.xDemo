@@ -83,7 +83,8 @@ module.exports = {
             service: path.join(__dirname, '/src/service'),
             page: path.join(__dirname, '/src/page'),
             styles: path.join(__dirname, '/src/styles'),
-            images: path.join(__dirname, '/src/images')
+            images: path.join(__dirname, '/src/images'),
+            reduxModel: path.join(__dirname, '/src/reduxModel')
         }
     },
     devServer: {

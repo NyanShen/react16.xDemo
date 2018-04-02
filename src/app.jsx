@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import {Provider, connect} from "react-redux";
+import ReduxToastr from "react-redux-toastr";
+import store from "reduxModel/store";
 
 import AppLayout from "page/layout/AppLayout.jsx";
 import Home from "page/home/Home.jsx";
@@ -18,27 +21,39 @@ class App extends React.Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         return (
-            <Router>
-                <Switch>
-                    <Route path="/login" component={Login}/>
-                    <Route path="/" render={() => (
-                        <AppLayout>
-                            <Switch>
-                                <Route path="/" exact component={Home}/>
-                                <Route path="/antTable" exact component={AntTable}/>
-                                <Route path="/antForm" component={AntForm}/>
-                                <Route path="/user/index" component={User}/>
-                                <Redirect from="/user(/*)" to="/user/index"/>
-                                <Route path="/product(.category)?(/*)" component={ProductRouter}/>
-                                <Route component={ErrorPage}/>
-                            </Switch>
-                        </AppLayout>
-                    )
-                    }/>
-                </Switch>
-            </Router>
+            <Provider store={store}>
+                <section>
+                    <Router>
+                        <Switch>
+                            <Route path="/login" component={Login}/>
+                            <Route path="/" render={() => (
+                                <AppLayout>
+                                    <Switch>
+                                        <Route path="/" exact component={Home}/>
+                                        <Route path="/antTable" exact component={AntTable}/>
+                                        <Route path="/antForm" component={AntForm}/>
+                                        <Route path="/user/index" component={User}/>
+                                        <Redirect from="/user(/*)" to="/user/index"/>
+                                        <Route path="/product(.category)?(/*)" component={ProductRouter}/>
+                                        <Route component={ErrorPage}/>
+                                    </Switch>
+                                </AppLayout>
+                            )
+                            }/>
+                        </Switch>
+                    </Router>
+                    <ReduxToastr
+                        transitionIn="fadeIn"
+                        transitionOut="fadeOut"
+                        position="top-center"
+                        preventDuplicates
+                        newestOnTop={true}
+                        timeOut={4000}/>
+                </section>
+            </Provider>
         );
     };
 }
