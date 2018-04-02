@@ -5,11 +5,11 @@ import {Provider, connect} from "react-redux";
 import ReduxToastr from "react-redux-toastr";
 import store from "reduxModel/store";
 
-import AppLayout from "page/layout/AppLayout.jsx";
-import Home from "page/home/Home.jsx";
-import Login from "page/login/Login.jsx";
-import AntTable from "page/ant-table/AntTable.jsx";
-import ErrorPage from "page/error-page/ErrorPage.jsx";
+import AppLayout from "page/layout/AppLayout";
+import Home from "page/home/Home";
+import Login from "page/login/Login";
+import AntTable from "page/ant-table/AntTable";
+import ErrorPage from "page/error-page/ErrorPage";
 import AntForm from "page/ant-form/AntForm";
 import User from "page/user/User";
 import ProductRouter from "page/product/ProductRouter";
