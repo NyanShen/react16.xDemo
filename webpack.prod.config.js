@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const uglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
     entry: './src/app.js',
@@ -127,8 +128,12 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery'
         }),
+        new UglifyJSPlugin({
+            cache: true,
+            parallel: 2
+        }),
         new webpack.DefinePlugin({
-            'process.dev.NODE_ENV': JSON.stringify('development')
+            'process.dev.NODE_ENV': JSON.stringify('product')
         })
     ]
 };
