@@ -4,7 +4,7 @@ class PageTitle extends React.Component {
     render() {
         return (
             <div className="page-header">
-                <h1>{this.props.pageTitle}</h1>
+                <h3>{this.props.pageTitle}</h3>
                 {this.props.children}
             </div>
         );
