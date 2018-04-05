@@ -35,7 +35,7 @@ class SideBar extends React.Component {
                             <Link to="/antTable">表格table</Link>
                         </Menu.Item>
                         <Menu.Item key="3">
-                            <Link to="/login">首页</Link>
+                            <Link to="/dynamicMenu">动态菜单</Link>
                         </Menu.Item>
                     </SubMenu>
                     <SubMenu key="sub2" title={<span><Icon type="save"/>商品</span>}>
