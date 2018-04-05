@@ -42,6 +42,9 @@ class SideBar extends React.Component {
                         <Menu.Item key="6">
                             <Link to="/product">商品管理</Link>
                         </Menu.Item>
+                        <Menu.Item key="10">
+                            <Link to="/product/add">商品添加</Link>
+                        </Menu.Item>
                         <Menu.Item key="7">
                             <Link to="/product.category">品类管理</Link>
                         </Menu.Item>
