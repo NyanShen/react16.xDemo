@@ -51,8 +51,17 @@ class Login extends React.Component {
         }
     }
 
+    componentDidMount() {
+        const defaultItem = _menuUtil.getDefaultItem(this.state.myMenus, this.state.currentPath);
+        _menuUtil.setActiveNavItem(this.state.myMenus, defaultItem, this.props);
+        _menuUtil.openItem(defaultItem);
+        if (_menuUtil.hasChildItem(defaultItem)) {
+            _menuUtil.setActiveChildNavItem(this.state.myMenus, defaultItem, this.state.currentPath);
+        }
+    }
+
     setActiveChildNavItem(item) {
-        _menuUtil.setActiveChildNavItem(this.state.myMenus, item, this.currentPath);
+        _menuUtil.setActiveChildNavItem(this.state.myMenus, item, this.state.currentPath);
         this.forceUpdate();
     }
 
@@ -118,7 +127,8 @@ class Login extends React.Component {
                                                 <ul key={'menu_lu_' + index} className="list-unstyled sub-menu">
                                                     {navItem.childItems.map((childItem, childIndex) => {
                                                         return (
-                                                            <li key={'submenu_li_' + childIndex} className="child-nav-item"
+                                                            <li key={'submenu_li_' + childIndex}
+                                                                className="child-nav-item"
                                                                 onClick={() => this.setActiveChildNavItem(childItem)}>
                                                                 <a key={'submenu_a_' + childIndex} className="item-name"
                                                                    onClick={() => this.setActiveNavItem(childItem)}>

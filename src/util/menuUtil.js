@@ -1,6 +1,16 @@
 import  _ from "lodash";
 
 class menuUtil {
+
+    getDefaultItem(menus, currentPath) {
+        return _.find(menus, function (item) {
+            if (item.path === currentPath ||
+                _.some(item.childItems, {path: currentPath})) {
+                return item;
+            }
+        });
+    }
+
     setActiveChildNavItem(menus, item, currentPath) {
         this.clearActiveStatusWithChildItems(menus);
         if (_.isArray(item)) {
@@ -19,7 +29,7 @@ class menuUtil {
             this.clearActiveStatusWithChildItems(menus);
             item.active = true;
             if (!!item.path) {
-                router.navigate([item.path]);
+                //router.navigate([item.path]);
             }
         }
     }
