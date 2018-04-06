@@ -32,7 +32,7 @@ export default class Product {
         return _mm.request({
             url: "/api/products",
             method: "POST",
-            data: product
+            data: JSON.stringify(product)
         });
     }
 
@@ -50,7 +50,7 @@ export default class Product {
     // 获取品类
     getCategory(parentCategoryId) {
         return _mm.request({
-            url: "/api/product/categories",
+            url: "/api/products/categories",
             data: {
                 categoryId: parentCategoryId || 0
             }
@@ -60,7 +60,7 @@ export default class Product {
     // 新增品类
     saveCategory(category) {
         return _mm.request({
-            url: "/api/product/categories",
+            url: "/api/products/categories",
             method: "POST",
             data: {
                 parentId: category.parentId || 0,
@@ -72,7 +72,7 @@ export default class Product {
     // 更新品类名称
     updateCategoryName(category) {
         return _mm.request({
-            url: "/api/product/categories",
+            url: "/api/products/categories",
             method: "PATCH",
             data: category
         });

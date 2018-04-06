@@ -1,13 +1,15 @@
 import React from 'react';
+import {toastr} from "react-redux-toastr";
 
 import AppBreadcrumb from "component/breadcrumb/AppBreadcrumb";
 import PageTitle from "component/page-title/PageTitle";
 import ProductService from "service/ProductService";
+import FileUploader from "component/file-uploader/FileUploader";
 
 import "./index.scss";
 
 const _productService = new ProductService();
-
+const accepts = "image/jpg,image/jpeg,image/png,image/bmp";
 class ProductSave extends React.Component {
     constructor(props) {
         super(props);
@@ -76,12 +78,10 @@ class ProductSave extends React.Component {
     }
 
     loadSecondCategory() {
-        console.info(this.state.firstCategoryId)
         if (!this.state.firstCategoryId) {
             return;
         }
         _productService.getCategory(this.state.firstCategoryId).then(res => {
-            console.info(res)
             this.setState({
                 secondCategoryList: res
             });
@@ -111,6 +111,10 @@ class ProductSave extends React.Component {
         });
     }
 
+    onUploadChange(data) {
+        console.info(data)
+    }
+
     // 普通字段更新
     onValueChange(e) {
         let name = e.target.name,
@@ -119,6 +123,64 @@ class ProductSave extends React.Component {
         this.setState({
             [name]: e.target.value
         });
+    }
+
+    checkProduct(product) {
+        let result = {
+            status: true,
+            msg: '验证通过'
+        };
+        if (!product.name) {
+            result = {
+                status: false,
+                msg: '请输入商品名称'
+            }
+        }
+        if (!product.subtitle) {
+            result = {
+                status: false,
+                msg: '请输入商品描述'
+            }
+        }
+        if (!product.price) {
+            result = {
+                status: false,
+                msg: '请输入商品价格'
+            }
+        }
+        return result;
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        let product = {
+            categoryId: this.state.secondCategoryId || this.state.firstCategoryId || 0,
+            name: this.state.name,
+            subtitle: this.state.subtitle,
+            subImages: this.state.subImages.join(','),
+            detail: this.state.detail,
+            price: this.state.price,
+            stock: this.state.stock,
+            status: this.state.status || 1 // 状态为正常
+        };
+        console.info(product);
+        let checkProduct = this.checkProduct(product);
+        // 当为编辑时，添加id字段
+        if (this.state.id) {
+            product.id = this.state.id;
+        }
+        // 验证通过后，提交商品信息
+        if (checkProduct.status) {
+            // 保存product
+            _productService.saveProduct(product)
+                .then(() => {
+                    toastr.success("商品保存成功");
+                    window.location.href = '/#/product/index';
+                });
+        } else {
+            toastr.error(checkProduct.msg);
+        }
+        return false;
     }
 
     render() {
@@ -215,9 +277,16 @@ class ProductSave extends React.Component {
                                 </div>
                             </div>
                             <div className="form-group">
+                                <label htmlFor="inputEmail3" className="col-md-2 control-label">商品图片</label>
+                                <div className="col-md-3">
+                                    <FileUploader btnName="上传图片" accept={accepts}
+                                                  onChange={(res) => this.onUploadChange(res)}/>
+                                </div>
+                            </div>
+                            <div className="form-group">
                                 <label htmlFor="inputEmail3" className="col-md-2 control-label">商品详情</label>
                                 <div className="col-md-10">
-                                    {/*<RichEditor ref="rich-editor" onValueChange={(value) => this.onRichValueChange(value)} placeholder="商品详细信息"/>*/}
+                                    <textarea className="form-control text-area" rows={3}/>
                                 </div>
                             </div>
                             <div className="form-group">
