@@ -11,6 +11,7 @@ import Login from "page/login/Login";
 import AntTable from "page/ant-table/AntTable";
 import ErrorPage from "page/error-page/ErrorPage";
 import AntForm from "page/ant-form/AntForm";
+import DynamicMenu from "page/dynamic-menu/DynamicMenu";
 import User from "page/user/User";
 import ProductRouter from "page/product/ProductRouter";
 
@@ -35,6 +36,7 @@ class App extends React.Component {
                                         <Route path="/" exact component={Home}/>
                                         <Route path="/antTable" exact component={AntTable}/>
                                         <Route path="/antForm" component={AntForm}/>
+                                        <Route path="/dynamicMenu" component={DynamicMenu}/>
                                         <Route path="/user/index" component={User}/>
                                         <Redirect from="/user(/*)" to="/user/index"/>
                                         <Route path="/product(.category)?(/*)" component={ProductRouter}/>
