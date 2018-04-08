@@ -8,13 +8,24 @@ class SideBar extends React.Component {
     constructor(props) {
         super(props);
         this.state =  {
+            collapsed: false,
             currentPath : this.props.history.location || '/user'
         }
     }
 
+    toggleCollapsed() {
+        this.setState({
+            collapsed: !this.state.collapsed
+        });
+    }
     render() {
         return (
-            <Sider width={250} style={{background: '#fff'}}>
+            <Sider
+                width={250}
+                collapsible
+                onCollapse={() => this.toggleCollapsed()}
+                collapsed={this.state.collapsed}
+                style={{background: '#fff'}}>
                 <Menu
                     mode="inline"
                     defaultSelectedKeys={['0']}
